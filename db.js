@@ -6,12 +6,12 @@ dotenv.config();
 const { Pool } = pg;
 
 export const pool = new Pool({
-  host: process.env.DB_HOST,
+  host: process.env.DB_HOST || 'avo-adb-002.postgres.database.azure.com',
   port: Number(process.env.DB_PORT || 5432),
-  database: process.env.DB_NAME,
-  user: process.env.DB_USER,
-  password: process.env.DB_PASSWORD,
-  ssl: { require: true, rejectUnauthorized: false }
+  database: process.env.DB_NAME || 'rh_application',
+  user: process.env.DB_USER || 'administrationSTS',
+  password: process.env.DB_PASSWORD || 'St$@0987',
+  ssl: {rejectUnauthorized: false }
 });
 
 export async function testDbConnection() {
